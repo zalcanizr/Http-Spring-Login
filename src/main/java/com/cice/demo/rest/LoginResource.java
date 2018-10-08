@@ -28,7 +28,14 @@ public class LoginResource {
             ResultSet busqueda=statement.executeQuery("SELECT * from usuarios where user='"+user+"' and pass='"+pass+"' ");
             if(busqueda.first()){
                 respuesta="usuario encontrado";
+            }else{
+                respuesta="usuario y contraseña no coinciden";
             }
+
+            busqueda.close();
+            statement.close();
+            connection.close();
+            
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
